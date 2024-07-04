@@ -1,0 +1,6 @@
+{
+  "livingDocGenerator": {
+    "enabled": true,
+    "filePath": "TestExecution_{Now:yyyy-MM-dd}.json"
+  }
+}
