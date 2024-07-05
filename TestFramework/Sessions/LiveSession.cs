@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium.Appium.Windows;
+using TestFramework.Helpers.Logs;
 
 namespace TestFramework.Sessions;
 
@@ -13,6 +14,8 @@ public class LiveSession
 
     public static WindowsDriver<WindowsElement> StartApp()
     {
+        Logger.Info("Start Calculator Application");
+
         waDriver.Start();
 
         if (session == null)
@@ -31,10 +34,11 @@ public class LiveSession
 
     public static void StopApp()
     {
+        Logger.Info("Close Calculator Application");
+
         session?.CloseApp();
         session?.Dispose();
         session = null;
-        //WADriver.LookForWinAppDriver("WinAppDriver", true);
     }
 
     private static void Validate()

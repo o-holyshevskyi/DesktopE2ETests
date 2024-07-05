@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium.Appium.Windows;
 using System.Diagnostics;
+using TestFramework.Helpers.Logs;
 
 namespace TestFramework.Sessions;
 
@@ -21,6 +22,8 @@ internal class WADriver
 
     public static bool LookForWinAppDriver(string processName, bool killProcess)
     {
+        Logger.Info("Check if WinAppDriver is run.");
+
         bool found = false;
 
         foreach (var process in Process.GetProcessesByName(processName))
@@ -39,6 +42,8 @@ internal class WADriver
 
     private static Process RunWithAppDriver()
     {
+        Logger.Info("Start WinAppDriver.");
+
         string command = @"cd " + path + "&&WinAppDriver.exe";
 
         var startAppInfo = new ProcessStartInfo

@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium.Appium;
+using TestFramework.Helpers.Logs;
 
 namespace TestFramework.Sessions;
 
@@ -14,6 +15,8 @@ internal class SessionConfiguration
 
     public AppiumOptions ConfigOptions()
     {
+        Logger.Info("Config Appium options to run calculator.");
+
         appiumOptions.AddAdditionalCapability("app", calculatorAppId);
         appiumOptions.AddAdditionalCapability("deviceName", "WindowsPC");
 
