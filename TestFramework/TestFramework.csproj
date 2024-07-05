@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Appium.WebDriver" />
+    <PackageReference Include="SpecFlow" />
   </ItemGroup>
 
 </Project>

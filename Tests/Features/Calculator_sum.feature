@@ -1,4 +1,4 @@
-@Calculator @Add
+@Calculator @Sum
 Feature: Validate basic operations like add two numbers
 
 Calculator: Simple Tests for Windows Calculator
@@ -13,5 +13,11 @@ Scenario Outline: Add two numbers
 Examples:
 	| number1 | operator1 | number2 | operator2 | result |
 	| 0		  | +		  | 1	    | =		    | 1		 |
-	| 1		  | +		  | 1	    | =		    | 2		 |
-	| 0		  | +		  | 0	    | =		    | 0		 |
+	| 1		  | +		  | 2	    | =		    | 3		 |
+	| 2		  | +		  | 3	    | =		    | 5		 |
+	| 3		  | +		  | 4	    | =		    | 7		 |
+	| 4		  | +		  | 5	    | =		    | 9		 |
+	| 5		  | +		  | 6	    | =		    | 11	 |
+	| 6		  | +		  | 7	    | =		    | 13	 |
+	| 7		  | +		  | 8	    | =		    | 15	 |
+	| 8		  | +		  | 9	    | =		    | 17	 |
