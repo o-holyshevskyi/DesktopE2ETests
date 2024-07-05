@@ -26,12 +26,6 @@ jobs:
       with:
         fetch-depth: 0
 
-    # Install the .NET Core workload
-    #- name: Install .NET Core
-    #  uses: actions/setup-dotnet@v4
-    #  with:
-    #    dotnet-version: 8.0.x
-
     # Add MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
@@ -39,14 +33,6 @@ jobs:
     # Execute all unit tests in the solution
     - name: Run tests
       run: .\Tests\run_tests.bat
-
-    #- name: Execute unit tests
-    #  run: |
-    #    if (Test-Path .\run_tests.bat) {
-    #      .\run_tests.bat
-    #    } else {
-    #      Write-Error "run_tests.bat not found in the expected directory."
-    #    }
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
@@ -80,3 +66,10 @@ jobs:
       with:
         name: MSIX Package
         path: ${{ env.Wap_Project_Directory }}\AppPackages
+
+    # Upload the TestResult.html file as an artifact
+    - name: Upload test result artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: TestResult
+        path: Tests\TestResults\TestResult_*.html
