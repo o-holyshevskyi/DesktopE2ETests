@@ -1,13 +1,12 @@
 ﻿using OpenQA.Selenium.Appium.Windows;
 using System.Diagnostics;
+using TestFramework.Helpers;
 using TestFramework.Helpers.Logs;
 
 namespace TestFramework.Sessions;
 
 internal class WADriver
 {
-    private const string path = @"C:\Program Files (x86)\Windows Application Driver\";
-
     private static Process winAppDriverProcess = null;
 
     protected static WindowsDriver<WindowsElement> session = null;
@@ -44,7 +43,8 @@ internal class WADriver
     {
         Logger.Info("Start WinAppDriver.");
 
-        string command = @"cd " + path + "&&WinAppDriver.exe";
+        var configuration = ConfigurationReader.GetAppSetting();
+        string command = @"cd " + configuration.WinAppDriverApp + "&&WinAppDriver.exe";
 
         var startAppInfo = new ProcessStartInfo
         {
@@ -53,7 +53,6 @@ internal class WADriver
             WindowStyle = ProcessWindowStyle.Normal,
             CreateNoWindow = true,
             UseShellExecute = true,
-            Verb = "runas"
         };
 
         return Process.Start(startAppInfo);

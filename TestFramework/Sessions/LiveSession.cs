@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium.Appium.Windows;
+using OpenQA.Selenium.Support.PageObjects;
+using System.ServiceProcess;
 using TestFramework.Helpers.Logs;
 
 namespace TestFramework.Sessions;
@@ -15,6 +17,8 @@ public class LiveSession
     public static WindowsDriver<WindowsElement> StartApp()
     {
         Logger.Info("Start Calculator Application");
+
+        ServiceController sc = new ServiceController("SQL Server (TASQLSERVER)");
 
         waDriver.Start();
 
