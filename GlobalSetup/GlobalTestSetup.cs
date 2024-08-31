@@ -4,6 +4,7 @@ using DriverCore;
 using Logger;
 using Microsoft.Extensions.DependencyInjection;
 using PageObjects;
+using Selectors;
 using System.Reflection;
 using Utils.DI;
 
@@ -22,6 +23,7 @@ public static class GlobalTestSetup
             Assembly.GetAssembly(typeof(IClient)),
             Assembly.GetAssembly(typeof(IConfig)),
             Assembly.GetAssembly(typeof(IForm)),
+            Assembly.GetAssembly(typeof(ISelectorService)),
         };
 
         var injectMethods = assemblies

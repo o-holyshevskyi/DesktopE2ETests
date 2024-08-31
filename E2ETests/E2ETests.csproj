@@ -18,7 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GlobalSetup\GlobalSetup.csproj" />
+    <ProjectReference Include="..\GlobalSetup\GlobalSetup.csproj">
+      <ExcludeAssets>all</ExcludeAssets>
+    </ProjectReference>
     <ProjectReference Include="..\PageObjects\PageObjects.csproj" />
   </ItemGroup>
 

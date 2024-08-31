@@ -1,18 +1,18 @@
-﻿using ClientSession;
-using OpenQA.Selenium.Appium.Windows;
+﻿using OpenQA.Selenium.Appium.Windows;
 using PageObjects.Main.Actions;
+using Selectors;
 
 namespace PageObjects.Main;
 
-internal class Numbers(IClient client) : INumbers
+internal class Numbers(ISelectorService selectorService) : INumbers
 {
-    private readonly IClient _client = client ?? throw new ArgumentNullException(nameof(client));
+    private readonly ISelectorService _selectorService = selectorService ?? throw new ArgumentNullException(nameof(selectorService));
 
-    WindowsElement INumbers.Number_1 => _client.FindElement("num1Button");
-    WindowsElement INumbers.Number_2 => _client.FindElement("num2Button");
-    WindowsElement INumbers.Number_3 => _client.FindElement("num3Button");
-    WindowsElement INumbers.Operation_E => _client.FindElement("equalButton");
-    WindowsElement INumbers.Operation_P => _client.FindElement("plusButton");
+    WindowsElement INumbers.Number_1 => _selectorService.GetElement("num1Button");
+    WindowsElement INumbers.Number_2 => _selectorService.GetElement("num2Button");
+    WindowsElement INumbers.Number_3 => _selectorService.GetElement("num3Button");
+    WindowsElement INumbers.Operation_E => _selectorService.GetElement("equalButton");
+    WindowsElement INumbers.Operation_P => _selectorService.GetElement("plusButton");
 
     INumbersActions INumbers.Actions => new NumbersActions(this);
 }

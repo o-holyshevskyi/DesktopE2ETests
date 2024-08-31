@@ -1,14 +1,14 @@
-﻿using ClientSession;
-using OpenQA.Selenium.Appium.Windows;
+﻿using OpenQA.Selenium.Appium.Windows;
 using PageObjects.ResultField.Actions;
+using Selectors;
 
 namespace PageObjects.ResultField;
 
-internal class Result(IClient client) : IResult
+internal class Result(ISelectorService selectorService) : IResult
 {
-    private readonly IClient _client = client ?? throw new ArgumentNullException(nameof(client));
+    private readonly ISelectorService _selectorService = selectorService ?? throw new ArgumentNullException(nameof(selectorService));
 
-    WindowsElement IResult.ResultTextField => _client.FindElement("CalculatorResults");
+    WindowsElement IResult.ResultTextField => _selectorService.GetElement("CalculatorResults");
 
     IResultActions IResult.Actions => new ResultActions(this);
 }

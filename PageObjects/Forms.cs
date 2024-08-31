@@ -1,13 +1,13 @@
-﻿using ClientSession;
-using PageObjects.Main;
+﻿using PageObjects.Main;
 using PageObjects.ResultField;
+using Selectors;
 
 namespace PageObjects;
 
-internal class Forms(IClient client) : IForm
+internal class Forms(ISelectorService client) : IForm
 {
-    private IClient _client = client ?? throw new ArgumentNullException(nameof(client));
+    private readonly ISelectorService _selectorService = client ?? throw new ArgumentNullException(nameof(client));
 
-    public INumbers Numbers => new Numbers(_client);
-    public IResult Result => new Result(_client);
+    public INumbers Numbers => new Numbers(_selectorService);
+    public IResult Result => new Result(_selectorService);
 }

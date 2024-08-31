@@ -12,7 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Selectors\Selectors.csproj" />
+    <ProjectReference Include="..\Selectors\Selectors.csproj">
+      <ExcludeAssets>all</ExcludeAssets>
+    </ProjectReference>
     <ProjectReference Include="..\Utils\Utils.csproj" />
   </ItemGroup>
 
