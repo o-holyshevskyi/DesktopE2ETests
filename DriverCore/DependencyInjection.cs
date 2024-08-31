@@ -3,7 +3,7 @@ using Utils.DI;
 
 namespace DriverCore;
 
-public class DependencyInjection
+internal class DependencyInjection
 {
     [DependencyInjection]
     public static void Inject(IServiceCollection services)

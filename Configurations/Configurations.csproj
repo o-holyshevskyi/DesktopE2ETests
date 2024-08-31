@@ -7,9 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClientSession\ClientSession.csproj" />
-    <ProjectReference Include="..\Configurations\Configurations.csproj" />
-    <ProjectReference Include="..\DriverCore\DriverCore.csproj" />
+    <PackageReference Include="Appium.WebDriver" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Logger\Logger.csproj" />
     <ProjectReference Include="..\Utils\Utils.csproj" />
   </ItemGroup>

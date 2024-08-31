@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Utils.DI;
 
-namespace ClientSession;
+namespace Configurations;
 
 internal class DependencyInjection
 {
     [DependencyInjection]
     public static void Inject(IServiceCollection services)
     {
-        services.AddSingleton<IClient, Client>();
+        services.AddSingleton<IConfig, SessionConfiguration>();
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace ClientSession;
+﻿using OpenQA.Selenium.Appium.Windows;
+
+namespace ClientSession;
 
 public interface IClient
 {
-    void StartApp();
+    WindowsDriver<WindowsElement> StartApp();
 }

@@ -1,4 +1,5 @@
 ﻿using ClientSession;
+using Configurations;
 using DriverCore;
 using Logger;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,7 @@ public static class GlobalTestSetup
             Assembly.GetAssembly(typeof(ILogger)),
             Assembly.GetAssembly(typeof(IWinDriver)),
             Assembly.GetAssembly(typeof(IClient)),
+            Assembly.GetAssembly(typeof(IConfig)),
         };
 
         var injectMethods = assemblies

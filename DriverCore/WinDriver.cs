@@ -1,19 +1,14 @@
 ﻿using Logger;
-using OpenQA.Selenium.Appium.Windows;
 using System.Diagnostics;
 
 namespace DriverCore;
 
-internal class WinDriver : IWinDriver
+internal class WinDriver(ILogger logger) : IWinDriver
 {
-    private readonly ILogger _logger;
-    protected WindowsDriver<WindowsElement> session = null;
+    private readonly ILogger _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     private Process winAppDriverProcess = null;
 
-    public WinDriver(ILogger logger) 
-    {
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-    }
+    public string Url { get { return "http://127.0.0.1:4723"; } }
 
     public void RunDriver()
     {
@@ -21,7 +16,7 @@ internal class WinDriver : IWinDriver
             RunWithAppDriver();
     }
 
-    public bool LookForWinAppDriver(string processName, bool killProcess)
+    private bool LookForWinAppDriver(string processName, bool killProcess)
     {
         _logger.Info("Check if WinAppDriver is run.");
 
