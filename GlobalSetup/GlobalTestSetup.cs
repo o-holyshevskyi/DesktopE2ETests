@@ -3,6 +3,7 @@ using Configurations;
 using DriverCore;
 using Logger;
 using Microsoft.Extensions.DependencyInjection;
+using PageObjects;
 using System.Reflection;
 using Utils.DI;
 
@@ -20,6 +21,7 @@ public static class GlobalTestSetup
             Assembly.GetAssembly(typeof(IWinDriver)),
             Assembly.GetAssembly(typeof(IClient)),
             Assembly.GetAssembly(typeof(IConfig)),
+            Assembly.GetAssembly(typeof(IForm)),
         };
 
         var injectMethods = assemblies
@@ -38,5 +40,11 @@ public static class GlobalTestSetup
 
         var serviceProvider = serviceCollection.BuildServiceProvider();
         ServiceLocator.SetLocatorProvider(serviceProvider);
+    }
+
+    public static void RunClient()
+    {
+        IClient client = ServiceLocator.GetService<IClient>();
+        client.StartApp();
     }
 }

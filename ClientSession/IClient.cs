@@ -4,5 +4,6 @@ namespace ClientSession;
 
 public interface IClient
 {
-    WindowsDriver<WindowsElement> StartApp();
+    void StartApp();
+    WindowsElement FindElement(string selector);
 }

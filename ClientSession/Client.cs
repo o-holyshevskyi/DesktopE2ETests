@@ -12,7 +12,7 @@ internal class Client(ILogger logger, IWinDriver winDriver, IConfig config) : IC
     private readonly IConfig _config = config ?? throw new ArgumentNullException(nameof(config));
     private WindowsDriver<WindowsElement> _clientSession = null;
 
-    public WindowsDriver<WindowsElement> StartApp()
+    public void StartApp()
     {
         _logger.Info("Start Calculator Application");
 
@@ -28,8 +28,15 @@ internal class Client(ILogger logger, IWinDriver winDriver, IConfig config) : IC
 
             _clientSession.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0.2);
         }
+    }
 
-        return _clientSession;
+    public WindowsElement FindElement(string selector)
+    {
+        Validate();
+
+        var winElement = _clientSession.FindElementByAccessibilityId(selector);
+
+        return winElement;
     }
 
     private void Validate()

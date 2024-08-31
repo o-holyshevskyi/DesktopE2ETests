@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClientSession\ClientSession.csproj" />
     <ProjectReference Include="..\GlobalSetup\GlobalSetup.csproj" />
+    <ProjectReference Include="..\PageObjects\PageObjects.csproj" />
   </ItemGroup>
 
   <ItemGroup>

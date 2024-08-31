@@ -1,24 +1,36 @@
-using ClientSession;
 using GlobalSetup;
+using PageObjects;
 using Utils.DI;
 
 namespace E2ETests;
 
 public class Tests
 {
-    private IClient _client;
+    private IForm _form;
 
     [SetUp]
     public void Setup()
     {
         GlobalTestSetup.SetupDependencies();
-        _client = ServiceLocator.GetService<IClient>();
+        GlobalTestSetup.RunClient();
+
+        _form = ServiceLocator.GetService<IForm>();
     }
 
     [Test]
     public void Test1()
     {
-        _client.StartApp();
-        Assert.Pass();
+        int firstNumber = 1;
+        int secondNumber = 3;
+
+        _form.Numbers.Actions.ClickNumber(firstNumber)
+            .ClickOperation("+")
+            .ClickNumber(secondNumber)
+            .ClickOperation("=");
+
+        var result = _form.Result.Actions.GetResult();
+        var intResult = int.Parse(result.ToString());
+
+        Assert.That(intResult, Is.EqualTo(firstNumber + secondNumber));
     }
 }

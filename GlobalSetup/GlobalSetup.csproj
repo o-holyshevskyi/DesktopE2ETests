@@ -11,6 +11,7 @@
     <ProjectReference Include="..\Configurations\Configurations.csproj" />
     <ProjectReference Include="..\DriverCore\DriverCore.csproj" />
     <ProjectReference Include="..\Logger\Logger.csproj" />
+    <ProjectReference Include="..\PageObjects\PageObjects.csproj" />
     <ProjectReference Include="..\Utils\Utils.csproj" />
   </ItemGroup>
 
